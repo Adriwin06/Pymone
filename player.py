@@ -1,4 +1,4 @@
-from main import *
+from MonsterFunction import *
 
 class player():
     
