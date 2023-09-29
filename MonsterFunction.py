@@ -13,7 +13,11 @@ class MonsterMunch():
         self.element = element                  # variable qui stock l'élément du monstre
         self.faiblesse = faiblesse              # variable qui stock la faiblesse du monstre ainsi que sa résistance
 
-    # Thomas : perso je conseille de rajouter une fonction __eq__, __str__ et éventuellement __repr__
+    # Rajouter une fonction __eq__, __str__ et éventuellement __repr__
+
+    def __str__(self):
+        return f"Vitesse : {self.pVitesse} | Degats : {self.degats} | Degats infligés : {self.degats_Infl} | PV : {self.pV} | Puissance d'attaque : {self.pA} | Caractéristique de défense : {self.pD} | Element : {self.element} | Faiblesse : {self.faiblesse}"
+
 
 
 # Définition de la méthode "heal" qui soigne le joueur. Prends en compte une quantité etl'ajoute au pV actuels
@@ -63,7 +67,7 @@ class MonsterMunch():
 
 
 # Définition de la méthode "faiblesse" qui renvoie >>> 'Faible' <<< si l'ennemi est faible, >>> 'Résistant' <<< si l'ennemi est resistant, >>> 'none' si rien ne se passe
-    def faiblesse(self, other):
+    def faiblesse_resistance(self, other):
         assert isinstance(other, MonsterMunch), "other is not a MonsterMunch"
         elements_faiblesse = {'Feu': 'Eau', 'Pierre': 'Nature', 'Nature':'Feu', 'Eau':'Pierre'}
         elements_resistant = {'Pierre': 'Eau', 'Nature': 'Pierre', 'Eau':'Nature'}
@@ -75,7 +79,6 @@ class MonsterMunch():
                 return 'Résistant'
         return 'none'
             
-
 
 
 # Définition de la méthode "attack" qui attaque l'ennemi. Prends en compte les résistance et faiblesse de l'ennmei ainsi que sa vitesse
@@ -99,13 +102,13 @@ class MonsterMunch():
         if self.esquive(other) is True:                                 # "is True" pas nécessaire mais plus simple à lire
             return "L'ennemi vous a pris de vitesse et a esquivé"
         else:
-            if self.faiblesse(other) == 'Faible':
+            if self.faiblesse_resistance(other) == 'Faible':
                 self.degats_Infl *= 2
                 other.pV -= self.degats_Infl
                 print(f"Vous avez Infligés {self.degats_Infl} de dégâts à l'ennemis")
                 print("L'ennemi est faible")
             
-            elif self.faiblesse(other) == 'Résistant':
+            elif self.faiblesse_resistance(other) == 'Résistant':
                 self.degats_Infl *= 0.5
                 other.pV -= self.degats_Infl
                 print(f"Vous avez Infligés {self.degats_Infl} de dégâts à l'ennemis")
