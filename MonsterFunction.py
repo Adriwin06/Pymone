@@ -26,6 +26,8 @@ class MonsterMunch():
     def __repr__(self):
         return f"•{self.name}•"
     
+    
+    # test si le nom du monstre correspond avce le nom d'un autre monstre ou avec un str égal
     def __eq__(self, other):
         assert isinstance(other, MonsterMunch) or isinstance(other, str), "On ne peut comparer un MonsterMunch avec autre chose qu'un MonsterMunch ou un string."
         if isinstance(other, MonsterMunch):
