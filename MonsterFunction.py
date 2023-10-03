@@ -10,7 +10,7 @@ class MonsterMunch():
         self.degats_Infl = 0                    # variable qui stock le nombre de dégats infligés par le Monstre
         self.degats = 0                         # variable qui stock le nombre de dégats subi par le Monstre
         self.Attack = Attack                    # variable qui stock les différentes attaques
-        self.element = element                  # variable qui stock l'élément du monstre
+        self.element = element                  # variable qui stock l'élément du monstre (Il y a 'Feu', 'Eau', 'Pierre' et 'Nature')
         self.faiblesse = faiblesse              # variable qui stock la faiblesse du monstre ainsi que sa résistance
         self.selected_attack = 'Coup de queue'  # variable qui stock l'attaque sélectionné par le joueur
 
