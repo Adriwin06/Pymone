@@ -1,7 +1,8 @@
 import random
 
 class MonsterMunch():
-    def __init__(self, pV=200, pA=30, pD=0, pVitesse=100, Attack={'Charge': 1.2, 'Coup de queue': 1.7, 'Basique': 1.1}, element='Feu', faiblesse='eau'):
+    def __init__(self, name='Generic Monster', pV=200, pA=30, pD=0, pVitesse=100, Attack={'Charge': 1.2, 'Coup de queue': 1.7, 'Basique': 1.1}, element='Feu', faiblesse='eau'):
+        self.name = name                        # nom à afficher
         self.pV_orig = pV                       # PV originaux (à ne pas changer)
         self.pV = pV                            # PV actuels
         self.pA = pA                            # puissance d'attaque
@@ -15,6 +16,11 @@ class MonsterMunch():
 
     # Thomas : perso je conseille de rajouter une fonction __eq__, __str__ et éventuellement __repr__
 
+    def __str__(self):
+        return self.name
+    
+    def __repr__(self):
+        return f'•{self.name}•'
 
 # Définition de la méthode "heal" qui soigne le joueur. Prends en compte une quantité etl'ajoute au pV actuels
     def heal(self, amount):
