@@ -33,27 +33,33 @@ class MonsterMunch():
         assert isinstance(other, MonsterMunch), "other is not a MonsterMunch"
 
         # Si l'ennemi est plus rapide que toi, augmenter les chances d'esquiver par palier
-        if (self.pVitesse - other.pVitesse) < 0 < -10:                      #on aurait pu faire plus court avec : return True if random.random.randint(0, 100) < 15 else False
-            if random.randint(0,100) < 15:
+        # Si l'ennemi est plus rapide de entre 0 et 10 points, il aura 15% de chances d'esquiver
+        if (self.pVitesse - other.pVitesse) < 0 < -10:
+            if random.randint(0,100) < 15:                      #on aurait pu faire plus court avec : return True if random.random.randint(0, 100) < 15 else False
                 return True
             return False
         
+        # Si l'ennemi est plus rapide de entre 0 et 20 points, il aura 30% de chances d'esquiver
         elif (self.pVitesse - other.pVitesse) < 0 < -20:
             if random.randint(0,100) < 30:
                 return True
             return False
         
+        # Si l'ennemi est plus rapide de entre 0 et 30 points, il aura 40% de chances d'esquiver
         elif (self.pVitesse - other.pVitesse) < 0 < -30:
             if random.randint(0,100) < 40:
                 return True
             return False
         
+        # Si l'ennemi est plus rapide de entre 0 et 50 points, il aura 50%% de chances d'esquiver
         elif (self.pVitesse - other.pVitesse) < -50:
             if random.randint(0,100) < 50:
                 return True
             return False
 
-        # Si l'ennemi est moins rapide que toi, diminuer les chances d'esquiver pas palier
+        # Si l'ennemi est moins rapide que toi, diminuer les chances d'esquiver pas palier.
+        # Si l'ennemi est moins rapide de entre 0 et 10 points, il aura 7% de chaces d'esquiver.
+        # Sinon, il aura 4% de chaces d'esquiver.
         elif (self.pVitesse - other.pVitesse) > 10:
             if random.randint(0,100) < 7:
                 return True
@@ -66,7 +72,7 @@ class MonsterMunch():
 
 
 
-# Définition de la méthode "faiblesse" qui renvoie >>> 'Faible' <<< si l'ennemi est faible, >>> 'Résistant' <<< si l'ennemi est resistant, >>> 'none' si rien ne se passe
+# Définition de la méthode "faiblesse" qui renvoie >>> 'Faible' <<< si l'ennemi est faible, >>> 'Résistant' <<< si l'ennemi est resistant, >>> 'none' <<< si rien ne se passe
     def faiblesse_resistance(self, other):
         assert isinstance(other, MonsterMunch), "other is not a MonsterMunch"
         elements_faiblesse = {'Feu': 'Eau', 'Pierre': 'Nature', 'Nature':'Feu', 'Eau':'Pierre'}
@@ -89,7 +95,7 @@ class MonsterMunch():
         if other.pD > self.pA:
             self.degats_Infl *= round(random.uniform(0.05, 0.2), 2)
         
-        # Chance de coup critique
+        # Chance de coup critique de 1% (Si le nombre entier random est stirctement égal à 69)
         elif random.randint(0, 100) == 69:
             self.degats_Infl *= 1.50
         
@@ -98,7 +104,9 @@ class MonsterMunch():
             self.degats_Infl *= random.uniform(0.75, 1.0)
 
 
-
+# Appel la méthode "esquive" et si l'ennemi a esquivé, renvoie "L'ennemi vous a pris de vitesse et a esquivé". 
+# Sinon, regarde si l'ennemi est faible, résistant ou rien. Si l'ennemi est faible, augmenter les dégâts infligés. 
+# Si il est résistant, réduire les dégâts infligés. Sinon, ne rien faire.
         if self.esquive(other) is True:                                 # "is True" pas nécessaire mais plus simple à lire
             return "L'ennemi vous a pris de vitesse et a esquivé"
         else:
