@@ -21,15 +21,20 @@ class MonsterMunch():
         return f"Vitesse : {self.pVitesse} | Degats : {self.degats} | Degats infligés : {self.degats_Infl} | PV : {self.pV} | Puissance d'attaque : {self.pA} | Caractéristique de défense : {self.pD} | Element : {self.element} | Faiblesse : {self.faiblesse}"
 
 
+    # représentation d'un objet MonsterMunch (dans une liste ou autre)
     def __repr__(self):
         return f'•{self.name}•'
-    
+
+ 
+    # test si le nom de l'objet MonsterMunch est égal au nom d'un autre MonsterMunch ou à un str équivalent
     def __eq__(self, other):
         assert isinstance(other, MonsterMunch) or isinstance(other, str), 'On ne peut comparer un MonsterMunch avec autre chose qu\'un MonsterMunch ou un string.'
         if isinstance(other, MonsterMunch):
             return self.name == other.name
         else:
             return self.name == other
+
+
 
 # Définition de la méthode "heal" qui soigne le joueur. Prends en compte une quantité etl'ajoute au pV actuels
     def heal(self, amount):
