@@ -16,11 +16,15 @@ class MonsterMunch():
 
     # Thomas : perso je conseille de rajouter une fonction __eq__, __str__ et éventuellement __repr__
 
-    def __str__(self):
-        return self.name
-    
     def __repr__(self):
         return f'•{self.name}•'
+    
+    def __eq__(self, other):
+        assert isinstance(other, MonsterMunch) or isinstance(other, str), 'On ne peut comparer un MonsterMunch avec autre chose qu\'un MonsterMunch ou un string.'
+        if isinstance(other, MonsterMunch):
+            return self.name == other.name
+        else:
+            return self.name == other
 
 # Définition de la méthode "heal" qui soigne le joueur. Prends en compte une quantité etl'ajoute au pV actuels
     def heal(self, amount):
