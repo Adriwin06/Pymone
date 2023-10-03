@@ -15,20 +15,19 @@ class MonsterMunch():
         self.faiblesse = faiblesse              # variable qui stock la faiblesse du monstre ainsi que sa résistance
         self.selected_attack = 'Coup de queue'  # variable qui stock l'attaque sélectionné par le joueur
 
-    # Rajouter une fonction __eq__, __str__ et éventuellement __repr__
 
+
+# Permet de print tous les attributs du MonsterMunch
     def __str__(self):
         return f"Vitesse : {self.pVitesse} | Degats : {self.degats} | Degats infligés : {self.degats_Infl} | PV : {self.pV} | Puissance d'attaque : {self.pA} | Caractéristique de défense : {self.pD} | Element : {self.element} | Faiblesse : {self.faiblesse}"
 
 
     # représentation d'un objet MonsterMunch (dans une liste ou autre)
     def __repr__(self):
-        return f'•{self.name}•'
-
- 
-    # test si le nom de l'objet MonsterMunch est égal au nom d'un autre MonsterMunch ou à un str équivalent
+        return f"•{self.name}•"
+    
     def __eq__(self, other):
-        assert isinstance(other, MonsterMunch) or isinstance(other, str), 'On ne peut comparer un MonsterMunch avec autre chose qu\'un MonsterMunch ou un string.'
+        assert isinstance(other, MonsterMunch) or isinstance(other, str), "On ne peut comparer un MonsterMunch avec autre chose qu'un MonsterMunch ou un string."
         if isinstance(other, MonsterMunch):
             return self.name == other.name
         else:
