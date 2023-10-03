@@ -12,6 +12,7 @@ class MonsterMunch():
         self.Attack = Attack                    # variable qui stock les différentes attaques
         self.element = element                  # variable qui stock l'élément du monstre
         self.faiblesse = faiblesse              # variable qui stock la faiblesse du monstre ainsi que sa résistance
+        self.selected_attack = 'Coup de queue'  # variable qui stock l'attaque sélectionné par le joueur
 
     # Rajouter une fonction __eq__, __str__ et éventuellement __repr__
 
@@ -102,6 +103,11 @@ class MonsterMunch():
         # Si l'attaque est supérieure à la défense de l'ennemi
         else:
             self.degats_Infl *= random.uniform(0.75, 1.0)
+
+# Récupérer l'attaque séléctionné par le joueur et multiplier les dégâts infligés par les dégâts de l'attaque
+        for key, value in self.Attack.items():
+            if key == self.selected_attack:
+                self.degats_Infl *= value
 
 
 # Appel la méthode "esquive" et si l'ennemi a esquivé, renvoie "L'ennemi vous a pris de vitesse et a esquivé". 
