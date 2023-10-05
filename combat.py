@@ -11,12 +11,15 @@ class combat():
         self.inventory1 = self.j1.inventory
         if isinstance(opponent, player):
             self.inventory2 = self.j2.inventory
+        self.Monstre1 = 'rien zebi'
         
     def debut(self):
-        print(f'Un combat commence ! {(self.j1).name} affronte {self.j2} ! C\'est l\'heure de choisir vos monstres...')
+        print(f'Un combat commence ! {(self.j1).name} affronte {self.j2.name} ! C\'est l\'heure de choisir vos monstres...')
         print(f'{(self.j1).name}, c\'est à vous de choisir un combatant. Voici vos monstres :')
         for i in range(len(self.inventory1)):
-            print(f'• {self.inventory1[i]}')
+            print(f'• {self.inventory1[i].name}')
+        while self.Monstre1 not in self.inventory1:
+            self.Monstre1 = input('Lequel voulez-vous envoyer en premier ? ')
         
 
 # tests (à supprimer)
