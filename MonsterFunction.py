@@ -1,7 +1,8 @@
 import random
 
 class MonsterMunch():
-    def __init__(self, name='Generic Monster', pV=200, pA=30, pD=0, pVitesse=100, Attack={'Charge': 1.2, 'Coup de queue': 1.7, 'Basique': 1.1}, element='Feu', faiblesse='eau'):
+    def __init__(self, name='Generic Monster', pV=200, pA=30, pD=0, pVitesse=100, Attack={'Charge': 1.2, 'Coup de queue': 1.7, 'Basique': 1.1}, element='Feu'):
+    # Pk pas ajouter des attaques défensives et des attaques qui agissent sur plusieurs tours (comme du poison par exemple)
         self.name = name                        # nom à afficher
         self.pV_orig = pV                       # PV originaux (à ne pas changer)
         self.pV = pV                            # PV actuels
@@ -12,7 +13,7 @@ class MonsterMunch():
         self.degats = 0                         # variable qui stock le nombre de dégats subi par le Monstre
         self.Attack = Attack                    # variable qui stock les différentes attaques
         self.element = element                  # variable qui stock l'élément du monstre (Il y a 'Feu', 'Eau', 'Pierre' et 'Nature')
-        self.faiblesse = faiblesse              # variable qui stock la faiblesse du monstre ainsi que sa résistance
+        self.faiblesse = 'eau'                  # variable qui stock la faiblesse du monstre ainsi que sa résistance
         self.selected_attack = 'Coup de queue'  # variable qui stock l'attaque sélectionné par le joueur
 
 
