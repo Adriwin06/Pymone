@@ -1,3 +1,4 @@
+# Par Adriwin06
 import random
 
 class MonsterMunch():
