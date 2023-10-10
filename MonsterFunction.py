@@ -1,6 +1,6 @@
 import random
 
-class MonsterMunch():
+class MonsterMunch:
     def __init__(self, name='Generic Monster', pV=200, pA=30, pD=0, pVitesse=100, Attack={'Charge': 1.2, 'Coup de queue': 1.7, 'Basique': 1.1}, element='Feu'):
     # Pk pas ajouter des attaques défensives et des attaques qui agissent sur plusieurs tours (comme du poison par exemple)
         self.name = name                        # nom à afficher
