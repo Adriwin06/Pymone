@@ -27,8 +27,8 @@ class MonsterMunch:
     # représentation d'un objet MonsterMunch (dans une liste ou autre)
     def __repr__(self):
         return f"•{self.name}•"
-    
-    
+
+
     # test si le nom du monstre correspond avce le nom d'un autre monstre ou avec un str égal
     def __eq__(self, other):
         assert isinstance(other, MonsterMunch) or isinstance(other, str), "On ne peut comparer un MonsterMunch avec autre chose qu'un MonsterMunch ou un string."
@@ -48,7 +48,7 @@ class MonsterMunch:
 
 
 # Définition de la méthode "esquive" qui renvoie >>> True <<< si l'ennemi esquive en fonction des condition. Sinon, renvoie False
-    def esquive(self, other):   
+    def esquive(self, other):
         assert isinstance(other, MonsterMunch), "other is not a MonsterMunch"
 
         # Si l'ennemi est plus rapide que toi, augmenter les chances d'esquiver par palier
@@ -57,19 +57,19 @@ class MonsterMunch:
             if random.randint(0,100) < 15:                      #on aurait pu faire plus court avec : return True if random.random.randint(0, 100) < 15 else False
                 return True
             return False
-        
+
         # Si l'ennemi est plus rapide de entre 0 et 20 points, il aura 30% de chances d'esquiver
         elif (self.pVitesse - other.pVitesse) < 0 < -20:
             if random.randint(0,100) < 30:
                 return True
             return False
-        
+
         # Si l'ennemi est plus rapide de entre 0 et 30 points, il aura 40% de chances d'esquiver
         elif (self.pVitesse - other.pVitesse) < 0 < -30:
             if random.randint(0,100) < 40:
                 return True
             return False
-        
+
         # Si l'ennemi est plus rapide de entre 0 et 50 points, il aura 50%% de chances d'esquiver
         elif (self.pVitesse - other.pVitesse) < -50:
             if random.randint(0,100) < 50:
@@ -128,8 +128,8 @@ class MonsterMunch:
                 self.degats_Infl *= value
 
 
-# Appel la méthode "esquive" et si l'ennemi a esquivé, renvoie "L'ennemi vous a pris de vitesse et a esquivé". 
-# Sinon, regarde si l'ennemi est faible, résistant ou rien. Si l'ennemi est faible, augmenter les dégâts infligés. 
+# Appel la méthode "esquive" et si l'ennemi a esquivé, renvoie "L'ennemi vous a pris de vitesse et a esquivé".
+# Sinon, regarde si l'ennemi est faible, résistant ou rien. Si l'ennemi est faible, augmenter les dégâts infligés.
 # Si il est résistant, réduire les dégâts infligés. Sinon, ne rien faire.
         if self.esquive(other) is True:                                 # "is True" pas nécessaire mais plus simple à lire
             return "L'ennemi vous a pris de vitesse et a esquivé"
@@ -152,10 +152,10 @@ class MonsterMunch:
 
 
 
-# Définition de la méthode "initiative" qui renvoie le premier ennemi a attaquer
-    def initiative(self, other):   
-        assert isinstance(other, MonsterMunch), "other is not a MonsterMunch" 
+# Définition de la méthode "initiative" qui renvoie d'abord le plus rapide puis le moins rapide
+    def initiative(self, other):
+        assert isinstance(other, MonsterMunch), "other is not a MonsterMunch"
         if self.pVitesse > other.pVitesse:
-            return self
+            return self, other
         else:
-            return other
+            return other, self
