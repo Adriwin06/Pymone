@@ -1,8 +1,8 @@
 # Par PandEwok
 from MonsterFunction import *
-from player import *
+from Player import *
 
-# class représentant une instance de combat entre deux MonsterMunch
+# class représentant une instance d= Combat entre deux MonsterMunch
 class Combat:
     
     # constructeur avec j1 un joueur, j2 un second joueur ou une IA et backpack1 ou backpack 2 les inventaires
@@ -10,7 +10,7 @@ class Combat:
         self.j1 = user
         self.j2 = opponent
         self.backpack1 = self.j1.backpack
-        if isinstance(opponent, player):
+        if isinstance(opponent, Player):
             self.backpack2 = self.j2.backpack
             self.Monstre2 = 'rien zebi'
         else:
@@ -18,12 +18,12 @@ class Combat:
         self.Monstre1 = 'rien zebi'
     
     
-    # Méthode pour initier le combat ; déclare le début du combat et demande aux joueurs de choisir le monstre qu'ils veulent envoyer au combat
+    # Méthode pour initier l= Combat ; déclare le début d= Combat et demande aux joueurs de choisir le monstre qu'ils veulent envoyer a= Combat
     # puis l'assigne à Monster1 pour le joueur 1 ou Monster2 pour le joueur 2
     def debut(self):
         print(f"Un combat commence ! {(self.j1).name} affronte {self.j2.name} ! C'est l'heure de choisir vos monstres...")
         
-        # début du combat pour joueur 1 (choix du monstre)
+        # début d= Combat pour joueur 1 (choix du monstre)
         print(f"{(self.j1).name}, c'est à vous de choisir un combatant. Voici vos monstres :")
         for i in range(len(self.backpack1)):
             print(f'• {self.backpack1[i].name}')
@@ -34,9 +34,9 @@ class Combat:
                 self.Monstre1 = monstre
         print(f'Vous avez choisi {self.Monstre1.name} ! {self.Monstre1.name}, go ! \n')
         
-        # début du combat pour le joueur 2 (choix du monstre)
+        # début d= Combat pour le joueur 2 (choix du monstre)
         # seulement si l'adversaire est un joueur (ou un pnj considéré comme un joueur)
-        if isinstance(self.j2, player):
+        if isinstance(self.j2, Player):
             print(f"{(self.j2).name}, c'est à vous de choisir un combatant. Voici vos monstres :")
             for i in range(len(self.backpack2)):
                 print(f'• {self.backpack2[i].name}')
@@ -55,9 +55,9 @@ class Combat:
 
 
 # tests (à supprimer)
-player1 = player('pandipanda', [MonsterMunch(), MonsterMunch(name='Joueur de LoL'), MonsterMunch(name='Esclave')])
-player2 = player('Le Salaud', [MonsterMunch(name='Zigzaton'), MonsterMunch(name='Greou')])
-duel = combat(player1, player2)
+Player1 = Player('pandipanda', [MonsterMunch(), MonsterMunch(name='Joueur de LoL'), MonsterMunch(name='Esclave')])
+Player2 = Player('Le Salaud', [MonsterMunch(name='Zigzaton'), MonsterMunch(name='Greou')])
+duel = Combat(Player1, Player2)
 print([MonsterMunch()])
 print(MonsterMunch() == MonsterMunch(name='Generic Monster'))
 print(MonsterMunch() == MonsterMunch(name='bato'))
